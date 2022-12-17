@@ -6,14 +6,14 @@
    <div class="col-lg-12">
       <div class="box-element">
 
-         <a  class="btn btn-outline-dark" href="{% url 'homes' %}">&#x2190; Continue</a>
+         <a  class="btn btn-outline-dark" href="{% url 'home_list' %}">&#x2190; Continue</a>
 
 				<br>
 				<br>
 				<table class="table">
 					<tr>
-						<th><h5>Items: <strong>3</strong></h5></th>
-						<th><h5>Total:<strong> $42</strong></h5></th>
+						<th><h5>Total Days booked: <strong>{{booking.get_booking_items}}</strong></h5></th>
+						<th><h5>Total Price:<strong> ${{booking.get_booking_total}}</strong></h5></th>
 						<th>
 							<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
 						</th>
@@ -27,26 +27,28 @@
 
          <div class="book-row">
             <div style="flex:2"></div>
-            <div style="flex:2"><strong>Home</strong></div>
+            <div style="flex:2"><strong>Home/Hotel</strong></div>
             <div style="flex:1"><strong>Price/day</strong></div>
             <div style="flex:1"><strong>Num. of Days</strong></div>
             <div style="flex:1"><strong>Total</strong></div>
          </div>
 
+         {% for homespecified in homesspecified %}
          <div class="book-row">
-            <div style="flex:2"><img class="row-image" src="{% static 'images/placeholder.png' %}"></div>
-            <div style="flex:2"><p>Home 1</p></div>
-            <div style="flex:1"><p>$20</p></div>
+            <div style="flex:2"><img class="row-image" src="{{homespecified.home.imageURL}}"></div>
+            <div style="flex:2"><p>{{homespecified.home.name}}</p></div>
+            <div style="flex:1"><p>${{homespecified.home.price_day}}</p></div>
             <div style="flex:1">
-               <p class="days">2</p>
+               <p class="days">{{homespecified.days_number}}</p>
                <div class="days">
                   <img class="chg-days" src="{% static  'images/arrow-up.png' %}">
             
                   <img class="chg-days" src="{% static  'images/arrow-down.png' %}">
                </div>
             </div>
-            <div style="flex:1"><p>$32</p></div>
+            <div style="flex:1"><p>${{homespecified.get_total}}</p></div>
          </div>
+         {% endfor %}
 
       </div>
    </div>

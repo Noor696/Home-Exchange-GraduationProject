@@ -15,6 +15,8 @@
                   <input required class="form-control" type="email" name="email" placeholder="Email..">
                </div>
             </div>
+
+            
             
             <div id="adress-info">
                <hr>
@@ -26,12 +28,20 @@
                <div class="form-field">
                   <input class="form-control" type="text" name="city" placeholder="City..">
                </div>
-
                <div class="form-field">
-                  <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+                  <input class="form-control" type="text" name="phone" placeholder="Phone..">
+               </div>
+            </div>
+
+            <div id="date-info">
+               <hr>
+               <p>Booking Date:</p>
+               <hr>
+               <div class="form-field">
+                  <input required class="form-control" type="text" name="date" placeholder="First Date..">
                </div>
                <div class="form-field">
-                  <input class="form-control" type="text" name="country" placeholder="Phone..">
+                  <input required class="form-control" type="text" name="date" placeholder="Second Date..">
                </div>
             </div>
 
@@ -55,14 +65,17 @@
 				<hr>
 				<h3>Booking Summary</h3>
 				<hr>
+            {% for homespecified in homesspecified %}
 				<div class="book-row">
-					<div style="flex:2"><img class="row-image" src="{% static 'images/placeholder.png' %}"></div>
-					<div style="flex:2"><p>Home 1</p></div>
-					<div style="flex:1"><p>$20.00</p></div>
-					<div style="flex:1"><p>x2</p></div>
+					<div style="flex:2"><img class="row-image" src="{{homespecified.home.imageURL}}"></div>
+					<div style="flex:2"><p>{{homespecified.home.name}}</p></div>
+					<div style="flex:1"><p>${{homespecified.home.price_day}}</p></div>
+					<div style="flex:1"><p>x{{homespecified.days_number}}</p></div>
 				</div>
-				<h5>Num. of Days:   2</h5>
-				<h5>Total:   $4</h5>
+            {% endfor %}
+
+				<h5>Total Days booked: {{booking.get_booking_items}}</h5>
+				<h5>Total Price: ${{booking.get_booking_total}}</h5>
 
       </div>
    </div>
