@@ -2,45 +2,81 @@
 {% load static %}
 {% block content %}
 
+
+<div id="hero-container">
+
+   <img id="hero-img" src="{% static 'images/Home0Hotel.jpg' %}">
+   <h1 id="hero-h1">Home⭕Hotel </h1>
+   <p id="hero-p">BETTER HOLIDAYS</p>
+   <p id="hero-p">Travel More , Spend Less</p>
+   {% comment %} <a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'homelist/' %}">GO to list of HOME / HOTEL</a> {% endcomment %}
+   <a  class="btn btn-warning" href="{% url 'home_list' %}"> GO to list of HOME / HOTEL &#8594;</a>
+
+</div>
+
+<br>
+<br>
+
+
 <div class="row">
    <div class="col-lg-4">
-      <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
-      <div class="box-element product">
-         <h6><strong>Home</strong></h6>
-         <hr>
-
-         <button  class="btn btn-outline-secondary add-btn">Add to ❤️</button>
-         <a class="btn btn-outline-success" href="#">View</a>
-         <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
+      <img class="thumbnail" src="{% static 'images/Home0Hotel.jpg' %}">
+      <div class="box-element">
+         <h6><strong>Home⭕Hotel helps you with marketing your Home or Hotel, "enjoy more bookings and more money"</strong></h6>
+         
 
       </div>
    </div>
 
    <div class="col-lg-4">
-      <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
-      <div class="box-element product">
-         <h6><strong>Home</strong></h6>
-         <hr>
+      <img class="thumbnail" src="{% static 'images/serviceDescover.jpg' %}">
+      <div class="box-element">
+         <h6><strong>Finding Home & Hotel is easy and possible. Join us to Explore them, we helps you organize your vacation with ease!</strong></h6>
          
-         <button  class="btn btn-outline-secondary add-btn">Add to ❤️</button>
-         <a class="btn btn-outline-success" href="#">View</a>
-         <h4 style="display: inline-block; float: right"><strong>$40</strong></h4>
          
+
       </div>
    </div>
 
    <div class="col-lg-4">
-      <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
-      <div class="box-element product">
-         <h6><strong>Home</strong></h6>
-         <hr>
-
-         <button  class="btn btn-outline-secondary add-btn">Add to ❤️</button>
-         <a class="btn btn-outline-success" href="#">View</a>
-         <h4 style="display: inline-block; float: right"><strong>$50</strong></h4>
-
+      <img class="thumbnail" src="{% static 'images/serviceOrganize.jpg' %}">
+      <div class="box-element">
+         <h6><strong>Home⭕Hotel helps you find out the details of the Home OR Hotel you like, its location and the weather on the day of your reservation.</strong></h6>
+         
       </div>
    </div>
+
+<div id="section">
+   <div id="container">
+
+      <div style="width: 18rem, marginLeft:50px"  id="card">
+         <div id="content">
+           <img
+             variant="top"
+             id="imageBx"
+             src={% static 'images/Noor.jpg' %}
+           />
+           <div id="contentBx">
+             <div id="name"  >Noor Alkhateeb</div>
+             <div id="job"  style="color:#092953">Full Stack Web developer</div>
+           </div>
+           {% comment %} <div id="social-media-icons">
+             <a href="https://www.facebook.com/noor.alkhateb">
+               <FontAwesomeIcon icon={faFacebook}/>
+             </a>
+             <a href="https://www.linkedin.com/in/noor-al-khateeb-1a1665143/">
+               <FontAwesomeIcon icon={faLinkedinIn}/>
+             </a>
+             <a href="https://github.com/Noor696">
+               <FontAwesomeIcon icon={faGithub}/>
+             </a> 
+           </div> {% endcomment %}
+         </div>
+      </div>
+
+   </div>
+</div>
+
 </div>
 
 {% endblock content %}

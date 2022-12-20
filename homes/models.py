@@ -32,6 +32,9 @@ class Home(models.Model):
 	def __str__(self):
 		return self.name
 
+	class Meta:
+		ordering = ["-pk"]
+
 	@property
 	def imageURL(self):
 		try:
@@ -48,6 +51,8 @@ class Booking(models.Model):
 
 	def __str__(self):
 		return str(self.id)
+
+
 
 	@property
 	def get_booking_total(self):

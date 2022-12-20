@@ -41,9 +41,9 @@
             <div style="flex:1">
                <p class="days">{{homespecified.days_number}}</p>
                <div class="days">
-                  <img class="chg-days" src="{% static  'images/arrow-up.png' %}">
+                  <img data-home="{{homespecified.home.id}}" data-action="add" class="chg-days update-booking" src="{% static  'images/arrow-up.png' %}">
             
-                  <img class="chg-days" src="{% static  'images/arrow-down.png' %}">
+                  <img data-home="{{homespecified.home.id}}" data-action="remove" class="chg-days update-booking" src="{% static  'images/arrow-down.png' %}">
                </div>
             </div>
             <div style="flex:1"><p>${{homespecified.get_total}}</p></div>
