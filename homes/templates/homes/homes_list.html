@@ -7,11 +7,11 @@
    <div class="col-lg-4">
       <img class="thumbnail" src="{{home.imageURL}}">
       <div class="box-element home">
-         <h6><strong>{{home.name}}</strong></h6>
+         <h6 id="addb"><strong>{{home.name}} / {{home.rooms}} rooms</strong></h6>
+         
          <hr>
 
-         <button data-home="{{home.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-booking">Add to Booking</button>
-         {% comment %} <button data-home="{{home.id}}" class="btn btn-outline-secondary add-btn">Add to ❤️</button> {% endcomment %}
+         <button data-home="{{home.id}}" data-action="add" id="addb" class="btn btn-outline-secondary add-btn update-booking">Add to Booking</button>
          <a class="btn btn-outline-success" href="#">View</a>
          <h4 style="display: inline-block; float: right"><strong>${{home.price_day}}</strong></h4>
 
