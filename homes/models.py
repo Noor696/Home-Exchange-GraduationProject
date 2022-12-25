@@ -22,6 +22,8 @@ class Customer(models.Model):
 class Home(models.Model):
     # the Home model represents homes we have in homes list
 	name = models.CharField(max_length=200)
+	country = models.CharField(max_length=200 , null=True)
+	city = models.CharField(max_length=200 , null=True)
 	rooms = models.IntegerField(default=0, null=True, blank=True)
 	swimming_pool = models.BooleanField(default=False,null=True, blank=True)
 	parking = models.BooleanField(default=False,null=True, blank=True)

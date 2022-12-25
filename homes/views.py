@@ -1,15 +1,71 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
-from django.views.generic import DetailView
+
 from django.http import JsonResponse
 import json
 import datetime
+
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateUserForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
+def registerPage(request):
+	if request.user.is_authenticated:
+		return redirect('home_list')
+	else:
+		form = CreateUserForm()
+		if request.method == 'POST':
+			form = CreateUserForm(request.POST)
+			if form.is_valid():
+				form.save()
+				user = form.cleaned_data.get('username')
+				messages.success(request, 'Account was created for ' + user)
+				return redirect('login')
+
+
+
+
+	context = {'form':form}
+	return render(request, 'homes/register.html', context)
+
+		
+
+def loginPage(request):
+	if request.user.is_authenticated:
+		return redirect('home_list')
+	else:
+		if request.method == 'POST':
+			username = request.POST.get('username')
+			password =request.POST.get('password')
+			user = authenticate(request, username=username, password=password)
+			
+			if user is not None:
+				login(request, user)
+				return redirect('home_list')
+			else:
+				messages.info(request, 'Username OR password is incorrect')
+
+
+	context = {}
+	return render(request, 'homes/login.html', context)
+
+	
+	
+
+def logoutUser(request):
+	
+	logout(request)
+	return redirect('homes')
+
 
 def homes(request):
 	
 	context = {}  # on context dictionary I'm going to pass some data 
 	return render(request, 'homes/homes.html', context)
 
+@login_required(login_url='login')
 def home_list(request):
 	if request.user.is_authenticated:
 		customer = request.user.customer
@@ -27,7 +83,7 @@ def home_list(request):
 
 
 
-
+@login_required(login_url='login')
 def booking(request):
 	# first check if user is authenticated
 	# I going to set two conditions :
@@ -49,6 +105,7 @@ def booking(request):
 	}
 	return render(request, 'homes/booking.html', context)
 
+@login_required(login_url='login')
 def checkout(request):
 	if request.user.is_authenticated:
 		customer = request.user.customer

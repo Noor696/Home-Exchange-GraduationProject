@@ -8,10 +8,11 @@
       <img class="thumbnail" src="{{home.imageURL}}">
       <div class="box-element home">
          <h6 id="addb"><strong>{{home.name}} / {{home.rooms}} rooms</strong></h6>
+         <h6 id="addb">{{home.country}} / {{home.city}}</h6>
          
          <hr>
 
-         <button data-home="{{home.id}}" data-action="add" id="addb" class="btn btn-outline-secondary add-btn update-booking">Add to Booking</button>
+         <button data-home="{{home.id}}" data-action="add" style="border-bottom-color: #72123f;" class="btn btn-outline-secondary add-btn update-booking">Add to Booking</button>
          <a class="btn btn-outline-success" href="#">View</a>
          <h4 style="display: inline-block; float: right"><strong>${{home.price_day}}</strong></h4>
 
